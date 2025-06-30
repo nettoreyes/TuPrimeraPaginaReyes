@@ -1,0 +1,87 @@
+{% extends 'appTerceraEntrega/padre.html' %}
+{% load static %}
+{% block title %}Productos{% endblock %}
+
+{% block contenido %}
+
+
+   <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Lista de Productos</h1>
+        {# Botón de crear producto - Fuera de la tabla y mejor ubicado #}
+        <a href="/producto_formulario/" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Crear nuevo producto {# Icono de Bootstrap Icons #}
+        </a>
+    </div>
+
+    {# Contenedor responsivo para la tabla #}
+    <div class="table-responsive">
+        <table class="table table-hover table-striped border"> {# table-bordered para bordes, table-striped para filas alternas #}
+            <thead class="table-dark"> {# Cabecera oscura para contraste #}
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col" class="text-center">Precio</th>
+                    <th scope="col" class="text-center">Stock</th>
+                    <th scope="col" class="text-center">Estado</th>
+                    <th scope="col" class="text-center">Acciones</th> {# Columna para botones de acción #}
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.codigo_producto }}</td>
+                    <td>{{ producto.descripcion }}</td>
+                    <td class="text-center fw-bold text-success">${{ producto.precio }}</td>
+                    <td class="text-center">
+                        <span class="badge 
+                            {% if producto.stock > 0 %}
+                                bg-success
+                            {% else %}
+                                bg-danger
+                            {% endif %} 
+                            rounded-pill"
+                        >
+                            {{ producto.stock }}
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        <span class="badge 
+                            {% if producto.activo %}
+                                bg-info
+                            {% else %}
+                                bg-warning
+                            {% endif %}"
+                        >
+                            {% if producto.activo %}
+                                Activo
+                            {% else %}
+                                Inactivo
+                            {% endif %}
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        <a href="#" class="btn btn-sm btn-outline-info me-1" title="Ver detalles">
+                            <i class="bi bi-eye"></i> {# Icono para ver #}
+                        </a>
+                        <a href="#" class="btn btn-sm btn-outline-warning me-1" title="Editar producto">
+                            <i class="bi bi-pencil"></i> {# Icono para editar #}
+                        </a>
+                        <a href="#" class="btn btn-sm btn-outline-danger" title="Eliminar producto">
+                            <i class="bi bi-trash"></i> {# Icono para eliminar #}
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if not productos %}
+    <div class="alert alert-info text-center mt-4" role="alert">
+        No hay productos disponibles en este momento.
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

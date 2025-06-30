@@ -1,0 +1,37 @@
+{% extends 'appTerceraEntrega/padre.html' %}
+{% load static %}
+
+{% block title %}Formulario Producto{% endblock %}
+
+{% block contenido %}
+{% if formulario_producto.errors %}
+    <div class="alert alert-danger text-center" role="alert">
+        Datos no corresponden, revisar
+    </div>
+{% endif %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Agregar Curso</h3>
+
+                    <form method="POST" action="{% url 'producto_formulario' %}">
+                        {% csrf_token %}
+                        <table class="table table-borderless">
+                            {{ formulario_producto.as_table }}
+                        </table>
+                        <div class="d-grid">
+                            <input type="submit" class="btn btn-primary" value="Enviar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+       
+{% endblock %}
