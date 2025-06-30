@@ -1,4 +1,4 @@
-Nombre de tu Aplicación Django
+AppTerceraEntrega
 Una aplicación web desarrollada con Django para tercera entrega de curso de Python
 📝 Descripción
 Esta aplicación contiene, creacion y listado de productos, clientes y categorias
