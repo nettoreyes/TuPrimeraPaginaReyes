@@ -23,5 +23,11 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('post_list/', views.post_list, name="post_list"),
     path('productos/', views.productos, name="productos"),
-    path('producto_formulario/',views.producto_formulario,name='producto_formulario'),
+    path('categorias/', views.categorias, name="categorias"),
+    path('clientes/', views.clientes, name="clientes"),
+    path('producto_formulario/', views.producto_formulario,name='producto_formulario'),
+    path('categoria_formulario/', views.categoria_formulario,name='categoria_formulario'),
+    path('cliente_formulario/', views.cliente_formulario,name='cliente_formulario'),
+    path('busquedaProducto/', views.busquedaProducto, name="busquedaProducto"),
+    path('buscar/', views.buscar, name='buscar'),
 ]

@@ -1,0 +1,87 @@
+{% extends 'appTerceraEntrega/padre.html' %}
+{% load static %}
+
+{% block title %}Resultados Busqueda{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-lg"> {# Sombra más pronunciada, sin borde predeterminado, esquinas más redondeadas #}
+                <div class="card-header bg-primary text-white text-center py-3 rounded-top-lg"> {# Cabecera destacada #}
+                    <h4 class="mb-0">Resultados de la búsqueda</h4>
+                </div>
+                <div class="card-body p-4"> {# Mayor padding dentro del cuerpo de la tarjeta #}
+
+                    <p class="lead text-center mb-4">
+                        Búsqueda realizada por: <span class="fw-bold text-primary">{{ codigo_producto }}</span>
+                    </p>
+
+                    {% if productos %}
+                        <div class="list-group"> {# Usamos div en lugar de ul para mayor flexibilidad #}
+                            {% for producto in productos %}
+                                <a href="#" class="list-group-item list-group-item-action mb-3 rounded-3 shadow-sm"> {# Cada resultado como un 'card-like' item #}
+                                    <div class="d-flex w-100 justify-content-between align-items-start mb-2">
+                                        <h5 class="mb-1 text-info">{{ producto.descripcion }}</h5>
+                                        <small class="text-muted">Código: <span class="fw-bold">{{ producto.codigo_producto }}</span></small>
+                                    </div>
+                                    <div class="row g-2"> {# Rejilla interna para los detalles #}
+                                        <div class="col-sm-6 col-md-4">
+                                            <p class="mb-0 small text-muted">Precio:</p>
+                                            <p class="mb-0 fw-bold text-success fs-5">${{ producto.precio }}</p>
+                                        </div>
+                                        <div class="col-sm-6 col-md-4">
+                                            <p class="mb-0 small text-muted">Stock:</p>
+                                            <p class="mb-0">
+                                                <span class="badge 
+                                                    {% if producto.stock > 0 %}
+                                                        bg-success
+                                                    {% else %}
+                                                        bg-danger
+                                                    {% endif %} 
+                                                    rounded-pill fs-6"
+                                                >
+                                                    {{ producto.stock }}
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <p class="mb-0 small text-muted">Estado:</p>
+                                            <p class="mb-0">
+                                                <span class="badge 
+                                                    {% if producto.activo %}
+                                                        bg-info
+                                                    {% else %}
+                                                        bg-warning
+                                                    {% endif %} fs-6"
+                                                >
+                                                    {% if producto.activo %}
+                                                        Activo
+                                                    {% else %}
+                                                        Inactivo
+                                                    {% endif %}
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning mt-3 text-center" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i> No se encontraron productos con ese código.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {# Botón para volver o realizar otra búsqueda #}
+            <div class="text-center mt-4">
+                <a href="/busquedaProducto/" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Realizar otra búsqueda
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+       
+{% endblock %}

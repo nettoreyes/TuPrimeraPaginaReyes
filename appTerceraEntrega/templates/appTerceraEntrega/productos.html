@@ -7,24 +7,22 @@
 
    <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="mb-0">Lista de Productos</h1>
-        {# Botón de crear producto - Fuera de la tabla y mejor ubicado #}
+        <h1 class="mb-0">Lista de Productos</h1>       
         <a href="/producto_formulario/" class="btn btn-primary">
-            <i class="bi bi-plus-circle"></i> Crear nuevo producto {# Icono de Bootstrap Icons #}
+            <i class="bi bi-plus-circle"></i> Crear nuevo producto 
         </a>
     </div>
 
     {# Contenedor responsivo para la tabla #}
     <div class="table-responsive">
-        <table class="table table-hover table-striped border"> {# table-bordered para bordes, table-striped para filas alternas #}
-            <thead class="table-dark"> {# Cabecera oscura para contraste #}
+        <table class="table table-hover table-striped border">
+            <thead class="table-dark"> 
                 <tr>
                     <th scope="col">Código</th>
                     <th scope="col">Descripción</th>
-                    <th scope="col" class="text-center">Precio</th>
-                    <th scope="col" class="text-center">Stock</th>
-                    <th scope="col" class="text-center">Estado</th>
-                    <th scope="col" class="text-center">Acciones</th> {# Columna para botones de acción #}
+                    <th scope="col" class="text-end">Precio</th>
+                    <th scope="col" class="text-end">Stock</th>
+                    <th scope="col" class="text-center">Estado</th>                    
                 </tr>
             </thead>
             <tbody>
@@ -32,8 +30,8 @@
                 <tr>
                     <td>{{ producto.codigo_producto }}</td>
                     <td>{{ producto.descripcion }}</td>
-                    <td class="text-center fw-bold text-success">${{ producto.precio }}</td>
-                    <td class="text-center">
+                    <td class="text-end fw-bold text-success pe-2">${{ producto.precio }}</td>
+                    <td class="text-end pe-2">
                         <span class="badge 
                             {% if producto.stock > 0 %}
                                 bg-success
@@ -59,18 +57,7 @@
                                 Inactivo
                             {% endif %}
                         </span>
-                    </td>
-                    <td class="text-center">
-                        <a href="#" class="btn btn-sm btn-outline-info me-1" title="Ver detalles">
-                            <i class="bi bi-eye"></i> {# Icono para ver #}
-                        </a>
-                        <a href="#" class="btn btn-sm btn-outline-warning me-1" title="Editar producto">
-                            <i class="bi bi-pencil"></i> {# Icono para editar #}
-                        </a>
-                        <a href="#" class="btn btn-sm btn-outline-danger" title="Eliminar producto">
-                            <i class="bi bi-trash"></i> {# Icono para eliminar #}
-                        </a>
-                    </td>
+                    </td>                    
                 </tr>
                 {% endfor %}
             </tbody>

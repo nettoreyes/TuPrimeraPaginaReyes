@@ -3,8 +3,47 @@
 {% block title %}Inicio{% endblock %}
 
 {% block contenido %}
-
-    <h1>Hola Django!!</h1>
-    <p>{{ mensaje }}</p>
+   <div class="container d-flex justify-content-center mt-5 mb-5"> 
+    <div class="col-md-8 col-lg-6"> 
+        <h2 class="text-center mb-4 display-5 fw-bold text-primary">Explora nuestras opciones</h2> 
+        <div class="list-group list-group-flush shadow-sm"> 
+            
+            {# {% for opcion in opciones_principales %} #}
+            <a href="/productos/" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+                <i class="bi bi-box-seam fs-4 text-secondary me-3"></i> 
+                <div class="flex-grow-1">
+                    <h5 class="mb-1">Productos</h5>
+                    <p class="mb-0 text-muted">Administra y visualiza todos tus productos.</p>
+                </div>
+                <i class="bi bi-chevron-right text-muted"></i>
+            </a>
+            <a href="/busquedaProducto/" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+                <i class="bi bi-search fs-4 text-secondary me-3"></i>
+                <div class="flex-grow-1">
+                    <h5 class="mb-1">Buscar productos</h5>
+                    <p class="mb-0 text-muted">Encuentra productos específicos rápidamente.</p>
+                </div>
+                <i class="bi bi-chevron-right text-muted"></i>
+            </a>
+            <a href="/categorias/" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+                <i class="bi bi-tags fs-4 text-secondary me-3"></i> 
+                <div class="flex-grow-1">
+                    <h5 class="mb-1">Categorías</h5>
+                    <p class="mb-0 text-muted">Administra y visualiza todas tus categorías.</p>
+                </div>
+                <i class="bi bi-chevron-right text-muted"></i>
+            </a>
+            <a href="/clientes/" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+                <i class="bi bi-people fs-4 text-secondary me-3"></i> 
+                <div class="flex-grow-1">
+                    <h5 class="mb-1">Clientes</h5>
+                    <p class="mb-0 text-muted">Gestiona la información de tus clientes.</p>
+                </div>
+                <i class="bi bi-chevron-right text-muted"></i>
+            </a>
+            {# {% endfor %} #}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

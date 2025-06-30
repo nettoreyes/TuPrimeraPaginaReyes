@@ -1,0 +1,30 @@
+{% extends 'appTerceraEntrega/padre.html' %}
+{% load static %}
+
+{% block title %}Busqueda productos{% endblock %}
+
+{% block contenido %}
+<div class="container d-flex justify-content-center mt-5 mb-5">
+    <div class="col-md-8 col-lg-6"> 
+        <h2 class="text-center mb-4 display-6 fw-bold text-secondary">Buscar Producto</h2>
+
+        <form action="/buscar/" method="GET" class="shadow-sm p-4 border rounded bg-light">
+            <div class="input-group input-group-lg"> 
+                <label for="codigo_producto" class="visually-hidden">Código del Producto</label> 
+                <input
+                    type="text"
+                    name="codigo_producto"
+                    id="codigo_producto"
+                    class="form-control"
+                    placeholder="Ingrese código del producto..."
+                    aria-label="Código del Producto"
+                >
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search"></i> Buscar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
